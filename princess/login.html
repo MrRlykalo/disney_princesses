@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход | Королевский Архив</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo"><a href="index.html">КОРОЛЕВСКИЙ АРХИВ</a></div>
+            <div class="burger-btn"><span></span><span></span><span></span></div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="booking.html">Бронирование</a></li>
+                    <li><a href="locations.html">Локации</a></li>
+                    <li class="notif-wrapper">
+                        <button class="notif-btn">🔔<span class="notif-count">1</span></button>
+                        <ul class="notif-list" id="notification-list">
+                            <li data-href="login.html">🔐 Войдите для доступа ко всем функциям</li>
+                        </ul>
+                    </li>
+                    <li class="account-mobile-links">
+                        <a href="login.html" class="btn-login active">Войти</a>
+                        <a href="register.html" class="btn-register">Регистрация</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="account-links">
+                <a href="login.html" class="btn-login active">Войти</a>
+                <a href="register.html" class="btn-register">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>Вход в Королевский Архив</h1>
+                    <p>Войдите в свою учетную запись, чтобы получить доступ ко всем волшебным возможностям</p>
+                </div>
+
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="login-email">Email адрес</label>
+                        <input type="email" id="login-email" placeholder="ваш@email.com" required>
+                        <div class="form-hint">Например: tiana@palace.com</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Пароль</label>
+                        <input type="password" id="login-password" placeholder="Введите ваш пароль" required>
+                        <div class="form-hint">Минимум 8 символов</div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember-me">
+                            <span class="checkmark"></span>
+                            Запомнить меня
+                        </label>
+                        <a href="#" class="forgot-link">Забыли пароль?</a>
+                    </div>
+
+                    <button type="submit" class="auth-btn primary">
+                        <span class="btn-text">Войти в Архив</span>
+                        <span class="btn-icon">🔑</span>
+                    </button>
+
+                    <div class="demo-login">
+                        <h3>Демо-доступ:</h3>
+                        <div class="demo-accounts">
+                            <div class="demo-account">
+                                <strong>Администратор:</strong><br>
+                                Логин: <code>Админ</code><br>
+                            </div>
+                        </div>
+                        <button type="button" onclick="handleLoginPrompt()" class="auth-btn secondary">
+                            🧪 Протестировать демо-вход
+                        </button>
+                    </div>
+                </form>
+
+                <div class="auth-divider">
+                    <span>Или войдите с помощью</span>
+                </div>
+
+                <div class="social-auth">
+                    <button type="button" class="social-btn google">
+                        <span class="social-icon">🔍</span>
+                        Google
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                        <span class="social-icon">📘</span>
+                        Facebook
+                    </button>
+                    <button type="button" class="social-btn apple">
+                        <span class="social-icon">🍎</span>
+                        Apple
+                    </button>
+                </div>
+
+                <div class="auth-footer">
+                    <p>Еще нет учетной записи? <a href="register.html" class="auth-link">Зарегистрируйтесь здесь</a></p>
+                </div>
+            </div>
+
+            <div class="auth-welcome">
+                <div class="welcome-content">
+                    <h2>Добро пожаловать обратно!</h2>
+                    <p>Мы рады снова видеть вас в Королевском Архиве. Войдите, чтобы продолжить ваше путешествие по волшебному миру Диснея.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">👑</span>
+                            <div>
+                                <h4>Доступ ко всем принцессам</h4>
+                                <p>Полные досье и истории 13 официальных принцесс</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🗺️</span>
+                            <div>
+                                <h4>Эксклюзивные карты</h4>
+                                <p>Исследуйте волшебные королевства и локации</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🎭</span>
+                            <div>
+                                <h4>Бронирование событий</h4>
+                                <p>Участвуйте в балах и королевских мероприятиях</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <a href="#" class="fixed-btn" title="Наверх">↑</a>
+
+    <footer>
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h3>Королевский Архив</h3>
+                <p>Ваш проводник в мир диснеевских принцесс. Безопасный вход и защита данных.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Безопасность</h3>
+                <ul>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Условия использования</a></li>
+                    <li><a href="#">Защита данных</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Помощь</h3>
+                <p>📧 <a href="mailto:support@royal-archive.com">support@royal-archive.com</a></p>
+                <p>🔒 Ваши данные в безопасности</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Королевский Архив | Система безопасного входа</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .auth-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            min-height: 80vh;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .auth-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .auth-header h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+
+        .auth-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .auth-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.1);
+        }
+
+        .form-hint {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .checkbox-label input {
+            margin-right: 8px;
+        }
+
+        .forgot-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .forgot-link:hover {
+            color: var(--primary-light);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .auth-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .auth-btn.primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .auth-btn.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .auth-btn.secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .demo-login {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .demo-login h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .demo-accounts {
+            margin-bottom: 15px;
+        }
+
+        .demo-account {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .demo-account code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .auth-divider {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .auth-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e9ecef;
+        }
+
+        .auth-divider span {
+            background: white;
+            padding: 0 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .social-auth {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .auth-footer {
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            padding-top: 25px;
+        }
+
+        .auth-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .auth-link:hover {
+            color: var(--primary-light);
+        }
+
+        .auth-welcome {
+            padding: 40px;
+        }
+
+        .welcome-content h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .welcome-content p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            background: var(--gold);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-item h4 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .feature-item p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .auth-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .auth-card {
+                padding: 30px 25px;
+            }
+
+            .auth-welcome {
+                padding: 20px;
+            }
+        }
+    </style>
+</body>
+</html>

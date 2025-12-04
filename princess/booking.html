@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование | Tiana's Palace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .booking-hero {
+            background: linear-gradient(135deg, rgba(44, 11, 79, 0.9) 0%, rgba(106, 44, 112, 0.8) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .booking-hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .booking-hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .booking-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+        
+        .booking-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .booking-sidebar {
+            position: sticky;
+            top: 100px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f8f9fa;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .form-section h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            margin-top: 10px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        
+        .radio-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .restaurant-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f8f9fa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .testimonial {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .testimonial .author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .map-container {
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .map-container h2 {
+            margin-bottom: 30px;
+        }
+        
+        .restaurant-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            background: var(--gold);
+            color: var(--primary);
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+        
+        @media (max-width: 1024px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-sidebar {
+                position: static;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .booking-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo"><a href="index.html">КОРОЛЕВСКИЙ АРХИВ</a></div>
+            
+            <div class="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="booking.html" class="active">Бронирование</a></li>
+                    <li><a href="locations.html">Локации</a></li>
+                    
+                    <!-- 🔧 FIX: Убираем дублирующий HTML для уведомлений -->
+                    <li class="notif-wrapper">
+                        <button class="notif-btn">🔔<span class="notif-count">2</span></button>
+                        <!-- Уведомления будут добавляться через JavaScript -->
+                        <ul class="notif-list" id="notification-list"></ul>
+                    </li>
+                    
+                    <li class="account-mobile-links">
+                        <a href="login.html" class="btn-login">Войти</a>
+                        <a href="register.html" class="btn-register">Регистрация</a>
+                    </li>
+                </ul>
+            </nav>
+                        
+            <div class="account-links">
+                <a href="login.html" class="btn-login">Войти</a>
+                <a href="register.html" class="btn-register">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="booking-hero">
+        <div class="container">
+            <h1>Ужин во Дворце Тианы</h1>
+            <p>Забронируйте столик в самом волшебном ресторане Нового Орлеана. Живой джаз, фирменное гамбо и магия светлячков ждут вас!</p>
+        </div>
+    </div>
+
+    <main class="container">
+        <div id="booking-success" class="success-message" style="display: none;">
+            <h3>🎉 Бронирование подтверждено!</h3>
+            <p>Мы отправили подтверждение на вашу почту. Ждём вас во Дворце Тианы!</p>
+            <p><strong>Детали бронирования:</strong></p>
+            <div id="booking-details"></div>
+            <button onclick="location.href='booking.html'" class="btn-magic btn-1" style="margin-top: 15px;">Забронировать ещё</button>
+        </div>
+
+        <div class="booking-container">
+            <div class="booking-content">
+                <form id="booking-form" class="booking-form">
+                    <div class="form-section">
+                        <h3>👤 Контактная информация</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="guest-name">Ваше полное имя</label>
+                                <input type="text" id="guest-name" class="form-control" placeholder="Принц Навин" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guest-email">Email адрес</label>
+                                <input type="email" id="guest-email" class="form-control" placeholder="naveen@maldonia.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guest-phone">Номер телефона</label>
+                                <input type="tel" id="guest-phone" class="form-control" placeholder="+1 (504) 555-0199">
+                            </div>
+                            <div class="form-group">
+                                <label for="guest-count">Количество гостей</label>
+                                <select id="guest-count" class="form-control" required>
+                                    <option value="">Выберите количество</option>
+                                    <option value="1">1 гость</option>
+                                    <option value="2" selected>2 гостя</option>
+                                    <option value="3">3 гостя</option>
+                                    <option value="4">4 гостя</option>
+                                    <option value="5">5 гостей</option>
+                                    <option value="6">6 гостей</option>
+                                    <option value="7">7 гостей</option>
+                                    <option value="8">8 гостей</option>
+                                    <option value="9">9 гостей</option>
+                                    <option value="10">10 гостей</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>📅 Детали визита</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="visit-date">Дата посещения</label>
+                                <input type="date" id="visit-date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="visit-time">Время посещения</label>
+                                <select id="visit-time" class="form-control" required>
+                                    <option value="">Выберите время</option>
+                                    <option value="17:00">17:00 - Ранний ужин</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="19:00">19:00 - Начало джаза</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="22:00">22:00 - Поздний ужин</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Предпочтительная зона ресторана</label>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="table-type" value="main-hall" checked>
+                                        <span>🎷 Главный зал (живой джаз)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="table-type" value="terrace">
+                                        <span>✨ Терраса (вид на сад со светлячками)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="table-type" value="private">
+                                        <span>👑 Приватная комната (для особых случаев)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>🍽️ Предварительный заказ</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="main-dish">Основное блюдо</label>
+                                <select id="main-dish" class="form-control">
+                                    <option value="">Выбрать на месте</option>
+                                    <option value="gumbo">🍲 Фирменное гамбо Тианы</option>
+                                    <option value="jambalaya">🌶️ Острая джамбалайя</option>
+                                    <option value="etouffee">🦐 Креветки Этуффе</option>
+                                    <option value="catfish">🐟 Жареный сом по-креольски</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dessert">Десерт</label>
+                                <select id="dessert" class="form-control">
+                                    <option value="">Выбрать на месте</option>
+                                    <option value="beignets">🍩 Бенье с сахарной пудрой</option>
+                                    <option value="pecan-pie">🥧 Пирог с орехами пекан</option>
+                                    <option value="bread-pudding">🍮 Хлебный пудинг</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="special-requests">Особые пожелания</label>
+                                <textarea id="special-requests" class="form-control" rows="4" placeholder="Аллергии, диетические ограничения, особые случаи..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>📜 Королевский указ (правила)</h3>
+                        <div class="rules-container">
+                            <div class="rules-list">
+                                <p>✅ Вход в королевских нарядах приветствуется</p>
+                                <p>✅ Фото и видео разрешены</p>
+                                <p>✅ Дети до 5 лет - бесплатно</p>
+                                <p>❌ Использование тёмной магии запрещено</p>
+                                <p>❌ Превращение гостей в лягушек не допускается</p>
+                                <p>🎵 Живая музыка с 19:00 до 23:00</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="agree-rules" required>
+                                    <span>Я принимаю условия королевского указа</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" style="width: 100%; padding: 18px; font-size: 1.2rem;">
+                        🎭 Забронировать волшебный вечер
+                    </button>
+                </form>
+            </div>
+
+            <aside class="booking-sidebar">
+                <h3>О ресторане "Tiana's Palace"</h3>
+                <img src="img/tiana-palace.jpeg" alt="Ресторан Тианы" class="restaurant-image">
+                
+                <div class="restaurant-info">
+                    <h4>🍽️ Шеф-повар: Тиана</h4>
+                    <p>Первая принцесса-предприниматель, владелица лучшего ресторана Нового Орлеана</p>
+                    
+                    <ul class="feature-list">
+                        <li>🎵 <strong>Живой джаз</strong> ежедневно с 19:00</li>
+                        <li>👨‍🍳 <strong>Шеф-повар Тиана</strong> лично контролирует кухню</li>
+                        <li>🌿 <strong>Свежие ингредиенты</strong> с местного рынка</li>
+                        <li>✨ <strong>Волшебная атмосфера</strong> светлячков</li>
+                        <li>🍹 <strong>Авторские коктейли</strong> от принца Навина</li>
+                    </ul>
+                    
+                    <div class="restaurant-hours">
+                        <h4>🕒 Часы работы:</h4>
+                        <p><strong>Пн-Чт:</strong> 17:00 - 23:00</p>
+                        <p><strong>Пт-Сб:</strong> 17:00 - 00:00</p>
+                        <p><strong>Вс:</strong> 12:00 - 22:00</p>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p>"Лучшие бенье в Новом Орлеане! Музыка, еда и атмосфера - всё совершенно!"</p>
+                        <p class="author">- Луи, джаз-музыкант</p>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h4>📞 Контакты:</h4>
+                        <p>📍 Французский квартал, Новый Орлеан</p>
+                        <p>📧 <a href="mailto:reservations@tianas-palace.com">reservations@tianas-palace.com</a></p>
+                        <p>📱 <a href="tel:+15045550199">+1 (504) 555-0199</a></p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="map-container">
+            <h2>📍 Как нас найти</h2>
+            <div class="media-container" style="position: relative;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.023365062121!2d-90.067234484885!3d29.957565481911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8620a6116fe22be7%3A0x21d59f6a882a4e1d!2sFrench%20Quarter%2C%20New%20Orleans%2C%20LA%2C%20USA!5e0!3m2!1sen!2sfi!4v1700000000000!5m2!1sen!2sfi" 
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div class="restaurant-marker">Tiana's Palace 🏰</div>
+            </div>
+            <p style="margin-top: 15px; color: var(--text-light);">Расположен в самом сердце Французского квартала, рядом с площадью Джексон-сквер</p>
+        </div>
+    </main>
+
+    <a href="#" class="fixed-btn" title="Наверх">↑</a>
+
+    <footer>
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h3>Tiana's Palace</h3>
+                <p>Самый волшебный ресторан Нового Орлеана</p>
+                <p>© 2025 Tiana's Palace Reservation System</p>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <p>📧 <a href="mailto:reservations@tianas-palace.com">reservations@tianas-palace.com</a></p>
+                <p>📞 <a href="tel:+15045550199">+1 (504) 555-0199</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>Часы работы</h3>
+                <p>Пн-Чт: 17:00 - 23:00</p>
+                <p>Пт-Сб: 17:00 - 00:00</p>
+                <p>Вс: 12:00 - 22:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Королевский Архив | Бронирование ресторана Тианы</p>
+        </div>
+    </footer>
+
+    <script>
+        // Оставляем ТОЛЬКО этот код для формы бронирования
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('guest-name').value,
+                email: document.getElementById('guest-email').value,
+                phone: document.getElementById('guest-phone').value,
+                guests: document.getElementById('guest-count').value,
+                date: document.getElementById('visit-date').value,
+                time: document.getElementById('visit-time').value,
+                area: document.querySelector('input[name="table-type"]:checked').value,
+                mainDish: document.getElementById('main-dish').value,
+                dessert: document.getElementById('dessert').value,
+                requests: document.getElementById('special-requests').value
+            };
+            
+            const successMessage = document.getElementById('booking-success');
+            const bookingDetails = document.getElementById('booking-details');
+            
+            bookingDetails.innerHTML = `
+                <p><strong>Имя:</strong> ${formData.name}</p>
+                <p><strong>Дата и время:</strong> ${formData.date} в ${formData.time}</p>
+                <p><strong>Гостей:</strong> ${formData.guests}</p>
+                <p><strong>Зона:</strong> ${getAreaName(formData.area)}</p>
+            `;
+            
+            successMessage.style.display = 'block';
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            this.reset();
+            animateSuccess();
+        });
+        
+        function getAreaName(areaValue) {
+            const areas = {
+                'main-hall': 'Главный зал (джаз)',
+                'terrace': 'Терраса (светлячки)',
+                'private': 'Приватная комната'
+            };
+            return areas[areaValue] || areaValue;
+        }
+        
+        function animateSuccess() {
+            const successMessage = document.getElementById('booking-success');
+            successMessage.style.transform = 'scale(0.9)';
+            successMessage.style.opacity = '0';
+            
+            setTimeout(() => {
+                successMessage.style.transition = 'all 0.5s ease';
+                successMessage.style.transform = 'scale(1)';
+                successMessage.style.opacity = '1';
+            }, 100);
+        }
+        
+        // Установка минимальной даты (сегодня)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('visit-date').min = today;
+        
+        // УДАЛИТЕ функцию demoAutoFill и её вызов, если она конфликтует
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

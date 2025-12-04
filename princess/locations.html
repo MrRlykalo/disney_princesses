@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Локации | Королевский Архив</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo"><a href="index.html">КОРОЛЕВСКИЙ АРХИВ</a></div>
+            <div class="burger-btn"><span></span><span></span><span></span></div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="booking.html">Бронирование</a></li>
+                    <li><a href="locations.html" class="active">Локации</a></li>
+                    <li class="notif-wrapper">
+                        <button class="notif-btn">🔔<span class="notif-count">2</span></button>
+                        <ul class="notif-list" id="notification-list">
+                            <li data-href="locations.html">🗺️ Новая карта локаций!</li>
+                            <li data-href="new_orleans_location.html">🇺🇸 Открыт Новый Орлеан</li>
+                        </ul>
+                    </li>
+                    <li class="account-mobile-links">
+                        <a href="login.html" class="btn-login">Войти</a>
+                        <a href="register.html" class="btn-register">Регистрация</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="account-links">
+                <a href="login.html" class="btn-login">Войти</a>
+                <a href="register.html" class="btn-register">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Карта Волшебных Королевств</h1>
+        
+        <section class="intro-section">
+            <h2>Путешествие по Миру Диснея</h2>
+            <p>Откройте для себя удивительные локации, где живут ваши любимые принцессы. Каждое королевство имеет свою уникальную историю, культуру и магию.</p>
+            
+            <div class="search-filter">
+                <input type="text" placeholder="🔍 Поиск локаций..." class="search-input">
+                <select class="filter-select">
+                    <option value="all">Все локации</option>
+                    <option value="europe">Европа</option>
+                    <option value="asia">Азия</option>
+                    <option value="americas">Америка</option>
+                    <option value="fantasy">Фэнтези</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="locations-grid">
+            <article class="location-card featured" onclick="location.href='new_orleans_location.html'">
+                <div class="card-badge">⭐ Особенная</div>
+                <img src="img/orlean.jpg" alt="Новый Орлеан">
+                <div class="card-content">
+                    <h3>🇺🇸 Новый Орлеан, Луизиана</h3>
+                    <div class="location-meta">
+                        <span class="princess">👑 Принцесса: Тиана</span>
+                        <span class="era">📅 1920-е годы</span>
+                    </div>
+                    <p>Город джаза, креольской кухни и магии вуду. Место действия "Принцессы и лягушки". Посетите Французский квартал и загадочные болота Байу.</p>
+                    <div class="card-features">
+                        <span class="feature">🎵 Джаз</span>
+                        <span class="feature">🍽️ Кухня</span>
+                        <span class="feature">🔮 Магия</span>
+                    </div>
+                </div>
+                <button class="card-btn">Исследовать →</button>
+            </article>
+
+            <article class="location-card">
+                <img src="img/agrabah.webp" alt="Аграба">
+                <div class="card-content">
+                    <h3>🕌 Аграба, Ближний Восток</h3>
+                    <div class="location-meta">
+                        <span class="princess">👑 Принцесса: Жасмин</span>
+                        <span class="era">📅 Древние времена</span>
+                    </div>
+                    <p>Жемчужина пустыни с величественным дворцом Султана. Город базаров, волшебных ковров и загадочной Пещеры Чудес.</p>
+                    <div class="card-features">
+                        <span class="feature">🏜️ Пустыня</span>
+                        <span class="feature">🧞‍♂️ Джинны</span>
+                        <span class="feature">👳 Восток</span>
+                    </div>
+                </div>
+                <button class="card-btn" disabled>Скоро...</button>
+            </article>
+
+            <article class="location-card">
+                <img src="img/corona.webp" alt="Корона">
+                <div class="card-content">
+                    <h3>☀️ Королевство Корона</h3>
+                    <div class="location-meta">
+                        <span class="princess">👑 Принцесса: Рапунцель</span>
+                        <span class="era">📅 Средневековье</span>
+                    </div>
+                    <p>Островное королевство, знаменитое ежегодным Фестивалем Фонариков. Земля золотых цветов и высокой башни.</p>
+                    <div class="card-features">
+                        <span class="feature">🏰 Замки</span>
+                        <span class="feature">💡 Фонарики</span>
+                        <span class="feature">🌺 Цветы</span>
+                    </div>
+                </div>
+                <button class="card-btn" disabled>Скоро...</button>
+            </article>
+
+            <article class="location-card">
+                <img src="img/podvod.jpg" alt="Атлантика">
+                <div class="card-content">
+                    <h3>🌊 Подводное королевство Атлантика</h3>
+                    <div class="location-meta">
+                        <span class="princess">👑 Принцесса: Ариэль</span>
+                        <span class="era">📅 Вечное время</span>
+                    </div>
+                    <p>Величественное подводное царство короля Тритона. Дворцы из кораллов, сады из морских водорослей и затонувшие корабли.</p>
+                    <div class="card-features">
+                        <span class="feature">🌊 Океан</span>
+                        <span class="feature">🧜‍♀️ Русалки</span>
+                        <span class="feature">🐚 Раковины</span>
+                    </div>
+                </div>
+                <button class="card-btn" disabled>Скоро...</button>
+            </article>
+
+            <article class="location-card">
+                <img src="img/city.jpg" alt="Китай">
+                <div class="card-content">
+                    <h3>🇨🇳 Империя Китай</h3>
+                    <div class="location-meta">
+                        <span class="princess">👑 Героиня: Мулан</span>
+                        <span class="era">📅 Династия Хань</span>
+                    </div>
+                    <p>Древняя империя с Великой стеной, императорским дворцом и военными традициями. Земля храбрых воинов и мудрых драконов.</p>
+                    <div class="card-features">
+                        <span class="feature">⚔️ Войны</span>
+                        <span class="feature">🐉 Драконы</span>
+                        <span class="feature">🎎 Традиции</span>
+                    </div>
+                </div>
+                <button class="card-btn" disabled>Скоро...</button>
+            </article>
+
+            <article class="location-card">
+                <img src="img/motonui.jpg" alt="Мотунуи">
+                <div class="card-content">
+                    <h3>🏝️ Остров Мотунуи, Полинезия</h3>
+                    <div class="location-meta">
+                        <span class="princess">👑 Принцесса: Моана</span>
+                        <span class="era">📅 Древние времена</span>
+                    </div>
+                    <p>Райский остров в Тихом океане. Земля мореплавателей, где океан выбирает своих героев, а легенды оживают.</p>
+                    <div class="card-features">
+                        <span class="feature">🌊 Океан</span>
+                        <span class="feature">⛵ Мореплавание</span>
+                        <span class="feature">🌴 Острова</span>
+                    </div>
+                </div>
+                <button class="card-btn" disabled>Скоро...</button>
+            </article>
+        </div>
+
+        <section class="map-section">
+            <h2>Обзорная Карта Мира</h2>
+            <div class="world-map">
+                <img src="img/map.jpg" alt="Карта мира Диснея" style="width:100%; border-radius:15px;">
+                <div class="map-point" style="top:30%; left:25%;" title="Новый Орлеан">🇺🇸</div>
+                <div class="map-point" style="top:35%; left:55%;" title="Аграба">🕌</div>
+                <div class="map-point" style="top:25%; left:50%;" title="Корона">☀️</div>
+                <div class="map-point" style="top:40%; left:75%;" title="Китай">🇨🇳</div>
+                <div class="map-point" style="top:60%; left:85%;" title="Мотунуи">🏝️</div>
+            </div>
+        </section>
+
+    </main>
+
+    <a href="#" class="fixed-btn" title="Наверх">↑</a>
+
+    <footer>
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h3>Картография Замка</h3>
+                <p>Исследуйте волшебные миры Диснея вместе с нами. Все локации тщательно изучены и задокументированы.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Быстрая навигация</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gallery.html">Все принцессы</a></li>
+                    <li><a href="new_orleans_location.html">Новый Орлеан</a></li>
+                    <li><a href="tiana.html">Профиль Тианы</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты исследователей</h3>
+                <p>📧 <a href="mailto:maps@royal-archive.com">maps@royal-archive.com</a></p>
+                <p>🗺️ Отдел картографии Королевского Архива</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Королевский Архив | Исследование волшебных миров</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .location-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .location-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .location-card.featured {
+            border: 3px solid var(--gold);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .location-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .location-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .location-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .location-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-features {
+            display: flex;
+            gap: 8px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .card-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 0 15px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .card-btn:hover:not(:disabled) {
+            background: var(--primary-light);
+        }
+
+        .card-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .search-filter {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .search-input, .filter-select {
+            padding: 12px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-input:focus, .filter-select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.1);
+        }
+
+        .map-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .world-map {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .map-point {
+            position: absolute;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .map-point:hover {
+            transform: scale(1.3);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .intro-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+    </style>
+</body>
+</html>

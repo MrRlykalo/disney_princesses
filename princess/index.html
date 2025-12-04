@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Королевский Архив | Главная</title>
+    <link rel="icon" href="img/castle3232.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="index.html">КОРОЛЕВСКИЙ АРХИВ</a>
+            </div>
+            
+            <div class="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="booking.html">Бронирование</a></li>
+                    <li><a href="locations.html">Локации</a></li>
+                    
+                    <li class="notif-wrapper">
+                        <button class="notif-btn">🔔<span class="notif-count">2</span></button>
+                        <ul class="notif-list" id="notification-list">
+                            <li data-href="gallery.html">✨ В галерее новые портреты!</li>
+                            <li data-href="booking.html">🎵 Сегодня живой джаз во Дворце</li>
+                        </ul>
+                    </li>
+                    
+                    <li class="account-mobile-links">
+                        <a href="login.html" class="btn-login">Войти</a>
+                        <a href="register.html" class="btn-register">Регистрация</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="account-links">
+                <a href="login.html" class="btn-login">Войти</a>
+                <a href="register.html" class="btn-register">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Энциклопедия Волшебства</h1>
+
+        <section id="welcome">
+            <div class="welcome-hero-right">
+                <div class="welcome-text-block">
+                    <h2>Добро пожаловать в Сказку</h2>
+                    <p>Это официальный фанатский архив, посвященный <strong>13 официальным принцессам Диснея</strong>. Здесь мы изучаем историю, географию и магию волшебных королевств.</p>
+                    
+                    <div class="fun-facts">
+                        <h3>Знаете ли вы?</h3>
+                        <ul>
+                            <li>Только у <strong>Тианы</strong> есть официальная работа и собственный бизнес</li>
+                            <li><strong>Мерида</strong> — единственная принцесса из студии Pixar</li>
+                            <li><strong>Мулан</strong> — единственная принцесса без королевского титула</li>
+                            <li><strong>Белоснежка</strong> — самая первая и самая юная принцесса (14 лет)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="welcome-image">
+                    <img src="img/magic43.jpg" alt="Волшебный замок Диснея" class="castle-hero-img">
+                </div>
+            </div>
+
+            <!-- Кнопки оставляем под блоком, как и было -->
+            <div class="magic-btn-container">
+                <button class="btn-magic btn-1" onclick="location.href='gallery.html'">
+                    <span class="btn-icon">Открыть Галерею</span>
+                </button>
+                <button class="btn-magic btn-2" onclick="location.href='booking.html'">
+                    <span class="btn-icon">Записаться на Бал</span>
+                </button>
+                <button class="btn-magic btn-3" onclick="location.href='locations.html'">
+                    <span class="btn-icon">Исследовать Локации</span>
+                </button>
+                <button class="btn-magic btn-4" onclick="location.href='tiana.html'">
+                    <span class="btn-icon">Профиль Принцессы</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="castle-map-section">
+            <h2 class="section-title">Разделы замка</h2>
+            
+            <div class="castle-map-wrapper">
+                <img src="img/magic-castle.jpg" alt="Карта Королевского Архива" class="castle-map">
+            </div>
+            
+            <!-- Вот сюда теперь кнопки — строго под картой и по центру -->
+            <div class="map-legend-buttons">
+                <a href="gallery.html" class="legend-btn" style="--btn-color: #1abc9c">
+                    <span class="btn-icon">Галерея принцесс</span>
+                </a>
+                
+                <a href="booking.html" class="legend-btn" style="--btn-color: #e74c3c">
+                    <span class="btn-icon">Ресторан Тианы</span>
+                </a>
+                
+                <a href="locations.html" class="legend-btn" style="--btn-color: #3498db">
+                    <span class="btn-icon">Локации королевств</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="glass-wrapper">
+            <div class="glass-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            
+            <h2>Магический Вестник</h2>
+            
+            <div id="newsletter-success" class="success-message">
+                <h3>✅ Подписка оформлена!</h3>
+                <p>Совы уже летят к вам с первыми новостями из королевства.</p>
+            </div>
+
+            <form id="newsletter-form" class="glass-form">
+                <p>Подпишитесь на новости королевства, чтобы первыми узнавать о балах, новых рецептах и магических событиях.</p>
+                
+                <div class="form-group">
+                    <input type="text" placeholder="Ваше Имя" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email (например: tiana@mail.com)" required>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Подписаться на новости</span>
+                    <span class="btn-icon">✉️</span>
+                </button>
+            </form>
+
+            <h3>Жизнь Замка</h3>
+            
+            <div class="mosaic-grid">
+                <div class="mosaic-item large" onclick="location.href='booking.html'">
+                    <img src="img/ball.jpg" alt="Бальный зал">
+                    <div class="mosaic-caption">
+                        <h4>Танцевальный Зал</h4>
+                        <p>Забронируйте место на королевском балу</p>
+                    </div>
+                </div>
+                <div class="mosaic-item" onclick="location.href='tiana.html'">
+                    <img src="img/garden.jpg" alt="Сад">
+                    <div class="mosaic-caption">Королевский Сад</div>
+                </div>
+                <div class="mosaic-item" onclick="location.href='gallery.html'">
+                    <img src="img/shoe.jpeg" alt="Артефакты">
+                    <div class="mosaic-caption">Артефакты Принцесс</div>
+                </div>
+                <div class="mosaic-item wide" onclick="location.href='locations.html'">
+                    <img src="img/map.jpg" alt="Карта мира">
+                    <div class="mosaic-caption">Карта Волшебных Локаций</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="video-section">
+            <h2>Трейлер: Магия Диснея</h2>
+            <div class="media-container">
+                <iframe src="img/video.mp4" 
+                        title="Disney Magic Trailer" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <p>Почувствуйте атмосферу волшебства перед тем, как войти в замок. Окунитесь в мир сказок и приключений.</p>
+        </section>
+
+    </main>
+
+    <a href="#" class="fixed-btn" title="Наверх">↑</a>
+
+    <footer>
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h3>О Королевском Архиве</h3>
+                <p>Учебный проект 2025, посвященный волшебному миру Диснея. Все права на персонажей принадлежат The Walt Disney Company.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📷</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Навигация по Архиву</h3>
+                <ul>
+                    <li><a href="index.html">Главная страница</a></li>
+                    <li><a href="gallery.html">Галерея принцесс</a></li>
+                    <li><a href="booking.html">Бронирование</a></li>
+                    <li><a href="locations.html">Волшебные локации</a></li>
+                    <li><a href="tiana.html">Профиль Тианы</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты Замка</h3>
+                <address>
+                    <p>The Walt Disney Company</p>
+                    <p>500 South Buena Vista Street</p>
+                    <p>Burbank, CA 91521</p>
+                    <p>📞 <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                    <p>📧 <a href="mailto:info@royal-archive.com">info@royal-archive.com</a></p>
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Королевский Архив | Практическая работа по веб-разработке</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

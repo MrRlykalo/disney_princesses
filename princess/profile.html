@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой профиль | Королевский Архив</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>  
+        <div class="container header-inner">
+            <div class="logo"><a href="index.html">КОРОЛЕВСКИЙ АРХИВ</a></div>
+            <div class="burger-btn"><span></span><span></span><span></span></div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="booking.html">Бронирование</a></li>
+                    <li><a href="locations.html">Локации</a></li>
+                    <li class="notif-wrapper">
+                        <button class="notif-btn">🔔<span class="notif-count">3</span></button>
+                        <ul class="notif-list" id="notification-list">
+                            <li data-href="profile.html">👑 Ваш профиль обновлен!</li>
+                            <li data-href="booking.html">🎵 Завтра живой джаз</li>
+                            <li data-href="gallery.html">✨ Новые портреты в галерее</li>
+                        </ul>
+                    </li>
+                    <li class="account-mobile-links">
+                        <a href="profile.html" class="btn-register" style="background: var(--accent-purple); color: white;">Мой профиль</a>
+                        <a href="login.html" class="btn-login">Выйти</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="account-links">
+                <a href="profile.html" class="btn-register" style="background: var(--accent-purple); color: white;">Мой профиль</a>
+                <a href="login.html" class="btn-login">Выйти</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="profile-header">
+            <h1>Мой королевский профиль</h1>
+            <p class="profile-subtitle">Добро пожаловать в ваш личный архив, <strong>Алексей</strong>!</p>
+        </div>
+
+        <section class="profile-main">
+            <div class="profile-sidebar">
+                <div class="profile-card">
+                    <div class="avatar-container">
+                        <img src="img/prince-mulan.webp" alt="Аватар пользователя" class="profile-avatar">
+                        <button class="avatar-edit">✏️</button>
+                    </div>
+                    <h2>Алексей</h2>
+                    <p class="user-title">🏰 Королевский исследователь</p>
+                    <div class="user-stats">
+                        <div class="stat">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Посещений</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Бронирования</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>Быстрые действия</h3>
+                    <button class="action-btn" onclick="location.href='booking.html'">
+                        <span class="action-icon">🎭</span>
+                        <span>Забронировать стол</span>
+                    </button>
+                    <button class="action-btn" onclick="location.href='gallery.html'">
+                        <span class="action-icon">🖼️</span>
+                        <span>Посетить галерею</span>
+                    </button>
+                    <button class="action-btn" onclick="location.href='locations.html'">
+                        <span class="action-icon">🗺️</span>
+                        <span>Исследовать локации</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h2>📊 Основная информация</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Имя пользователя:</label>
+                            <span>Артем</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Email:</label>
+                            <span>artem@example.com</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Дата регистрации:</label>
+                            <span>8 декабря 2025</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Статус:</label>
+                            <span class="status-badge">Активный исследователь</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Любимая принцесса:</label>
+                            <span>Тиана 🐸</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Предпочтения:</label>
+                            <span>Джаз, кулинария, магия</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>🎭 Мои бронирования</h2>
+                    <div class="bookings-list">
+                        <div class="booking-item active">
+                            <div class="booking-icon">🎵</div>
+                            <div class="booking-details">
+                                <h4>Ужин во Дворце Тианы</h4>
+                                <p>8 декабря 2025, 19:00</p>
+                                <p class="booking-status">✅ Подтверждено</p>
+                            </div>
+                            <button class="booking-action" onclick="location.href='booking.html'">Изменить</button>
+                        </div>
+                        
+                        <div class="booking-item">
+                            <div class="booking-icon">👑</div>
+                            <div class="booking-details">
+                                <h4>Экскурсия по замку</h4>
+                                <p>13 декабря 2025, 14:00</p>
+                                <p class="booking-status">⏳ Ожидает подтверждения</p>
+                            </div>
+                            <button class="booking-action" onclick="location.href='booking.html'">Детали</button>
+                        </div>
+                        
+                        <div class="booking-item completed">
+                            <div class="booking-icon">✨</div>
+                            <div class="booking-details">
+                                <h4>Бал принцесс</h4>
+                                <p>29 ноября 2025, 20:00</p>
+                                <p class="booking-status">✅ Завершено</p>
+                            </div>
+                            <button class="booking-action">Отзыв</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>⭐ Моя активность</h2>
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <div class="activity-icon">🖼️</div>
+                            <div class="activity-content">
+                                <h4>Просмотр галереи</h4>
+                                <p>Вы посетили галерею 8 раз</p>
+                                <span class="activity-time">2 дня назад</span>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-card">
+                            <div class="activity-icon">📖</div>
+                            <div class="activity-content">
+                                <h4>Изучение истории</h4>
+                                <p>Прочитано 15 статей о принцессах</p>
+                                <span class="activity-time">1 неделю назад</span>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-card">
+                            <div class="activity-icon">🎵</div>
+                            <div class="activity-content">
+                                <h4>Посещение концерта</h4>
+                                <p>Был на живом джазе в ресторане</p>
+                                <span class="activity-time">2 недели назад</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>⚙️ Настройки профиля</h2>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <h4>Уведомления</h4>
+                            <p>Получать новости о событиях</p>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <h4>Email рассылка</h4>
+                            <p>Еженедельные обновления архива</p>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <h4>Приватность</h4>
+                            <p>Скрыть профиль от других пользователей</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-actions">
+                        <button class="btn-magic btn-1" onclick="showPedactProf()">Редактировать профиль</button>
+                        <button class="btn-magic btn-2" onclick="showPasswordModal()">Сменить пароль</button>
+                        <button class="btn-magic btn-3" style="background: #e74c3c;" onclick="logout()">Выйти из системы</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="fixed-btn" title="Наверх">↑</a>
+
+    <footer>
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h3>Королевский Архив</h3>
+                <p>Ваш личный доступ к миру Диснея</p>
+                <p>Учебный проект 2025</p>
+            </div>
+            <div class="footer-col">
+                <h3>Аккаунт</h3>
+                <ul>
+                    <li><a href="profile.html">Мой профиль</a></li>
+                    <li><a href="booking.html">Мои бронирования</a></li>
+                    <li><a href="login.html">Выйти</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Поддержка</h3>
+                <p>📧 support@royal-archive.com</p>
+                <p>🕒 24/7</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Королевский Архив | Приветствуем, Артем! 👑</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPasswordModal() {
+            alert('Функция смены пароля будет доступна в следующем обновлении!');
+        }
+        
+        function showPedactProf() {
+            alert('Функция редактирования профиля будет доступна в следующем обновлении!');
+        }
+
+        function logout() {
+            if(confirm('Вы уверены, что хотите выйти из системы?')) {
+                window.location.href = 'login.html';
+            }
+        }
+        
+        // Демо-функции для переключения настроек
+        document.querySelectorAll('.switch input').forEach(switchInput => {
+            switchInput.addEventListener('change', function() {
+                const setting = this.parentElement.parentElement.querySelector('h4').textContent;
+                const status = this.checked ? 'включена' : 'выключена';
+                console.log(`Настройка "${setting}" ${status}`);
+            });
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

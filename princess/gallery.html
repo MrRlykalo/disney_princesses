@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея Принцесс | Королевский Архив</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Стили, адаптированные из locations.html для карточек принцесс */
+        .princesses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .princess-card {
+            background: var(--bg-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            display: flex; /* Для кнопки внизу */
+            flex-direction: column;
+        }
+
+        .princess-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .princess-card.featured {
+            border: 3px solid var(--gold);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 200px; /* Фиксированная высота как у локаций */
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1; /* Чтобы содержимое заполняло место до кнопки */
+        }
+
+        .princess-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            border-bottom: none; /* Удаляем подчеркивание h3 */
+        }
+        
+        .card-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .card-features {
+            display: flex;
+            gap: 8px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .card-link {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-radius: 0 0 15px 15px; /* Применяем к ссылке, чтобы была как кнопка */
+            margin-top: auto; /* Прижимает кнопку к низу */
+        }
+        
+        .card-link:hover {
+            background: var(--primary-light);
+        }
+        
+        .search-filter { /* Из locations.html */
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-input, .filter-select { /* Из locations.html */
+            padding: 12px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input { /* Из locations.html */
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-input:focus, .filter-select:focus { /* Из locations.html */
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.1);
+        }
+
+        .gallery-intro { /* Из locations.html (intro-section) */
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .gallery-intro p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        /* Дополнительные стили, которые были в оригинальной галерее, но не нужны в новом формате */
+        .era-section {
+            padding: 30px 0;
+            margin-bottom: 40px;
+        }
+        
+        .era-section h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo"><a href="index.html">КОРОЛЕВСКИЙ АРХИВ</a></div>
+            
+            <div class="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gallery.html" class="active">Галерея</a></li>
+                    <li><a href="booking.html">Бронирование</a></li>
+                    <li><a href="locations.html">Локации</a></li>
+                    
+                    <li class="notif-wrapper">
+                        <button class="notif-btn">🔔<span class="notif-count">2</span></button>
+                        <ul class="notif-list" id="notification-list">
+                            <li data-href="gallery.html">✨ Новый портрет в галерее!</li>
+                            <li data-href="booking.html">🎵 Живой джаз сегодня вечером</li>
+                        </ul>
+                    </li>
+                    
+                    <li class="account-mobile-links">
+                        <a href="login.html" class="btn-login">Войти</a>
+                        <a href="register.html" class="btn-register">Регистрация</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="account-links">
+                <a href="login.html" class="btn-login">Войти</a>
+                <a href="register.html" class="btn-register">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Галерея Принцесс Диснея</h1>
+
+        <section class="gallery-intro">
+            <h2>13 Официальных Принцесс</h2>
+            <p>От классических героинь до современных воительниц - каждая принцесса Диснея уникальна и вдохновляет своими качествами. Выберите свою любимую, чтобы узнать подробности.</p>
+            
+            <div class="search-filter">
+                <input type="text" placeholder="🔍 Поиск принцесс..." class="search-input">
+                <select class="filter-select">
+                    <option value="all">Все эпохи</option>
+                    <option value="classic">Классическая</option>
+                    <option value="renaissance">Ренессанс</option>
+                    <option value="modern">Новая Волна</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="princesses-grid">
+            
+            <article class="princess-card featured" data-era="modern" onclick="location.href='tiana.html'">
+                <div class="card-badge">QUEEN / FEATURED</div>
+                <div class="card-image">
+                    <img src="img/tiana.jpeg" alt="Тиана">
+                </div>
+                <div class="card-content">
+                    <h3>Тиана</h3>
+                    <p class="card-subtitle">Принцесса-предприниматель (2009)</p>
+                    <p class="card-description">Трудолюбивая и целеустремленная, верит в силу упорного труда и владеет рестораном.</p>
+                    <div class="card-features">
+                        <span class="feature">👑 Мальдония</span>
+                        <span class="feature">🍽️ Ресторатор</span>
+                        <span class="feature">💫 По браку</span>
+                    </div>
+                </div>
+                <a href="tiana.html" class="card-link">Подробнее о Тиане →</a>
+            </article>
+
+            <article class="princess-card" data-era="classic">
+                <div class="card-badge">1st / CLASSIC</div>
+                <div class="card-image">
+                    <img src="img/belosnezhka.jpeg" alt="Белоснежка">
+                </div>
+                <div class="card-content">
+                    <h3>Белоснежка</h3>
+                    <p class="card-subtitle">Самая первая принцесса (1937)</p>
+                    <p class="card-description">Наивная и добрая, с ангельским голосом, первая из диснеевских принцесс.</p>
+                    <div class="card-features">
+                        <span class="feature">🍎 Яблоко</span>
+                        <span class="feature">🎵 Пение</span>
+                        <span class="feature">👸 По рождению</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+
+            <article class="princess-card" data-era="classic">
+                <div class="card-image">
+                    <img src="img/zolushka.jpeg" alt="Золушка">
+                </div>
+                <div class="card-content">
+                    <h3>Золушка</h3>
+                    <p class="card-subtitle">Символ надежды и мечты (1950)</p>
+                    <p class="card-description">Трудолюбивая и терпеливая, верит в чудеса, несмотря на все трудности, благодаря Фее.</p>
+                    <div class="card-features">
+                        <span class="feature">👠 Туфелька</span>
+                        <span class="feature">🎃 Карета</span>
+                        <span class="feature">💫 По браку</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+
+            <article class="princess-card featured" data-era="renaissance">
+                <div class="card-badge">POPULAR / RENAISSANCE</div>
+                <div class="card-image">
+                    <img src="img/ariel.jpeg" alt="Ариэль">
+                </div>
+                <div class="card-content">
+                    <h3>Ариэль</h3>
+                    <p class="card-subtitle">Русалочка-мечтательница (1989)</p>
+                    <p class="card-description">Любопытная и независимая, готовая пожертвовать голосом ради любви и мира людей.</p>
+                    <div class="card-features">
+                        <span class="feature">🧜‍♀️ Русалка</span>
+                        <span class="feature">🎵 Голос</span>
+                        <span class="feature">🔱 Дочь Тритона</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+
+            <article class="princess-card" data-era="renaissance">
+                <div class="card-image">
+                    <img src="img/jasmine.jpeg" alt="Жасмин">
+                </div>
+                <div class="card-content">
+                    <h3>Жасмин</h3>
+                    <p class="card-subtitle">Принцесса Аграбы (1992)</p>
+                    <p class="card-description">Сильная и решительная, не желает жить по навязанным правилам и ищет настоящую любовь.</p>
+                    <div class="card-features">
+                        <span class="feature">🐅 Раджа</span>
+                        <span class="feature">🧞‍♂️ Джинн</span>
+                        <span class="feature">👸 По рождению</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+
+            <article class="princess-card" data-era="renaissance">
+                <div class="card-badge">HERO / WARRIOR</div>
+                <div class="card-image">
+                    <img src="img/mulan.jpeg" alt="Мулан">
+                </div>
+                <div class="card-content">
+                    <h3>Мулан</h3>
+                    <p class="card-subtitle">Воин и защитница (1998)</p>
+                    <p class="card-description">Храбрая и преданная, пожертвовала своей безопасностью, чтобы спасти честь семьи и Китай.</p>
+                    <div class="card-features">
+                        <span class="feature">⚔️ Меч</span>
+                        <span class="feature">🐲 Мушу</span>
+                        <span class="feature">🎖️ Консул</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+            
+            <article class="princess-card" data-era="modern">
+                <div class="card-image">
+                    <img src="img/rapunzel.jpeg" alt="Рапунцель">
+                </div>
+                <div class="card-content">
+                    <h3>Рапунцель</h3>
+                    <p class="card-subtitle">Обладательница волшебных волос (2010)</p>
+                    <p class="card-description">Мечтательная и творческая, жаждет увидеть мир за стенами башни и ежегодные фонарики.</p>
+                    <div class="card-features">
+                        <span class="feature">💇‍♀️ Волшебные волосы</span>
+                        <span class="feature">🎨 Творчество</span>
+                        <span class="feature">👸 По рождению</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+
+            <article class="princess-card" data-era="modern">
+                <div class="card-image">
+                    <img src="img/moana.jpeg" alt="Моана">
+                </div>
+                <div class="card-content">
+                    <h3>Моана</h3>
+                    <p class="card-subtitle">Дочь вождя мореплавателей (2016)</p>
+                    <p class="card-description">Решительная и любознательная, спасает свой остров, следуя зову океана и наследию предков.</p>
+                    <div class="card-features">
+                        <span class="feature">🌊 Океан</span>
+                        <span class="feature">🛶 Мореплавание</span>
+                        <span class="feature">👑 Дочь вождя</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+
+            <article class="princess-card" data-era="classic">
+                <div class="card-image">
+                    <img src="img/aurora.jpeg" alt="Аврора">
+                </div>
+                <div class="card-content">
+                    <h3>Аврора</h3>
+                    <p class="card-subtitle">Спящая красавица (1959)</p>
+                    <p class="card-description">Грациозная и романтичная, с волшебным голосом. Жертва проклятия, снятого поцелуем любви.</p>
+                    <div class="card-features">
+                        <span class="feature">🌹 Роза</span>
+                        <span class="feature">😴 Сон</span>
+                        <span class="feature">👑 По рождению</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+            
+            <article class="princess-card" data-era="renaissance">
+                <div class="card-image">
+                    <img src="img/belle.jpeg" alt="Белль">
+                </div>
+                <div class="card-content">
+                    <h3>Белль</h3>
+                    <p class="card-subtitle">Красавица и книголюб (1991)</p>
+                    <p class="card-description">Умная и начитанная, ценит внутреннюю красоту, не испугалась Чудовища.</p>
+                    <div class="card-features">
+                        <span class="feature">📚 Книги</span>
+                        <span class="feature">🌹 Роза</span>
+                        <span class="feature">💫 По браку</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+            
+            <article class="princess-card" data-era="renaissance">
+                <div class="card-image">
+                    <img src="img/pocahontas.jpeg" alt="Покахонтас">
+                </div>
+                <div class="card-content">
+                    <h3>Покахонтас</h3>
+                    <p class="card-subtitle">Дочь вождя (1995)</p>
+                    <p class="card-description">Мудрая и духовная, живет в гармонии с природой и предотвращает войну.</p>
+                    <div class="card-features">
+                        <span class="feature">🍃 Природа</span>
+                        <span class="feature">🎨 Цвета ветра</span>
+                        <span class="feature">👑 Дочь вождя</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+            
+            <article class="princess-card" data-era="modern">
+                <div class="card-image">
+                    <img src="img/merida.jpeg" alt="Мерида">
+                </div>
+                <div class="card-content">
+                    <h3>Мерида</h3>
+                    <p class="card-subtitle">Храбрая лучница (2012)</p>
+                    <p class="card-description">Независимая и смелая, предпочитает лук и стрелы придворным платьям. Единственная из Pixar.</p>
+                    <div class="card-features">
+                        <span class="feature">🏹 Лучница</span>
+                        <span class="feature">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Шотландия</span>
+                        <span class="feature">👸 По рождению</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+            
+            <article class="princess-card" data-era="modern">
+                <div class="card-image">
+                    <img src="img/raya.jpeg" alt="Рая">
+                </div>
+                <div class="card-content">
+                    <h3>Рая</h3>
+                    <p class="card-subtitle">Воин Кумандры (2021)</p>
+                    <p class="card-description">Сильная и находчивая, ищет способ восстановить мир в землях Кумандры с помощью дракона Сишу.</p>
+                    <div class="card-features">
+                        <span class="feature">⚔️ Меч</span>
+                        <span class="feature">🐉 Дракон</span>
+                        <span class="feature">🛡️ Защитница</span>
+                    </div>
+                </div>
+                <button class="card-link" disabled>Скоро...</button>
+            </article>
+
+        </div>
+    </main>
+
+    <a href="#" class="fixed-btn" title="Наверх">↑</a>
+
+    <footer>
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h3>Галерея Принцесс</h3>
+                <p>© 2025 Королевский Архив. Все права на персонажей принадлежат Disney.</p>
+                <p>Учебный проект по веб-разработке</p>
+            </div>
+            <div class="footer-col">
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="booking.html">Бронирование</a></li>
+                    <li><a href="locations.html">Локации</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <p>📧 <a href="mailto:gallery@royal-archive.com">gallery@royal-archive.com</a></p>
+                <p>📞 <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Королевский Архив | Исследуйте мир волшебства</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

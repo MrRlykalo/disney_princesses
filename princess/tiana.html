@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Принцесса Тиана | Королевский Архив</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tiana-hero {
+            position: relative;
+            background: linear-gradient(135deg, #006266 0%, #00b894 100%);
+            color: white;
+            padding: 100px 40px 80px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .tiana-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 100%),
+                url('img/tiana-back.webp') center/cover no-repeat;
+            background-size: cover;
+            animation: subtle-zoom 20s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes subtle-zoom {
+            0%   { background-size: 105%; }
+            100% { background-size: 120%; }
+        }
+
+        .tiana-hero > * { position: relative; z-index: 2; }
+
+        .tiana-hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tiana-hero .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .princess-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .princess-sidebar {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #00b894;
+        }
+        
+        .princess-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--gold);
+            margin: 0 auto 20px;
+            display: block;
+        }
+        
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .info-table td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+        
+        .info-table td:first-child {
+            font-weight: bold;
+            color: var(--primary);
+            width: 40%;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gold);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+        }
+        
+        .abilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .ability-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #00b894;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .media-item {
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .media-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .media-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 900px) {
+            .princess-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .princess-sidebar {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo"><a href="index.html">КОРОЛЕВСКИЙ АРХИВ</a></div>
+            <div class="burger-btn"><span></span><span></span><span></span></div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="booking.html">Бронирование</a></li>
+                    <li><a href="locations.html">Локации</a></li>
+                    <li><a href="tiana.html" class="active" style="color: var(--gold);">Тиана</a></li>
+                    <li class="notif-wrapper">
+                        <button class="notif-btn">🔔<span class="notif-count">2</span></button>
+                        <ul class="notif-list" id="notification-list">
+                            <li data-href="tiana.html">👑 Новые факты о Тиане!</li>
+                            <li data-href="booking.html">🍽️ Специальное меню от Тианы</li>
+                        </ul>
+                    </li>
+                    <li class="account-mobile-links">
+                        <a href="login.html" class="btn-login">Войти</a>
+                        <a href="register.html" class="btn-register">Регистрация</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="account-links">
+                <a href="login.html" class="btn-login">Войти</a>
+                <a href="register.html" class="btn-register">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="tiana-hero">
+            <h1>Тиана</h1>
+            <div class="hero-stats">
+                <div class="stat-badge">9-я принцесса</div>
+                <div class="stat-badge">Владелица ресторана</div>
+            </div>
+        </section>
+
+        <div class="princess-grid">
+            <aside class="princess-sidebar">
+                <img src="img/tiana.jpeg" alt="Тиана" class="princess-avatar">
+                
+                <h3>Королевский паспорт</h3>
+                <table class="info-table">
+                    <tr><td>Полное имя:</td><td>Тиана</td></tr>
+                    <tr><td>Титул:</td><td>Принцесса Мальдонии</td></tr>
+                    <tr><td>Возраст:</td><td>19 лет</td></tr>
+                    <tr><td>Род занятий:</td><td>Шеф-повар, ресторатор</td></tr>
+                    <tr><td>Фильм:</td><td>Принцесса и лягушка (2009)</td></tr>
+                    <tr><td>Озвучка:</td><td>Аника Нони Роуз</td></tr>
+                    <tr><td>Родители:</td><td>Джеймс (отец), Эудора (мать)</td></tr>
+                    <tr><td>Супруг:</td><td>Принц Навин</td></tr>
+                </table>
+
+                <div class="sidebar-actions">
+                    <button class="btn-magic btn-1" onclick="location.href='booking.html'" style="width: 100%; margin-bottom: 10px;">
+                        🍽️ Забронировать в ресторане
+                    </button>
+                    <button class="btn-magic btn-2" onclick="location.href='new_orleans_location.html'" style="width: 100%;">
+                        🗺️ Посетить Новый Орлеан
+                    </button>
+                </div>
+            </aside>
+
+            <div class="princess-content">
+                <section>
+                    <h2>История и характер</h2>
+                    <p>Тиана — не похожа на обычную сказочную принцессу. Она мечтает не о далёких странах и не о небесных замках, а о вещах вполне определённых: об успешном ресторанном бизнесе. Она — привлекательная и независимая афроамериканка, упорная, работящая, но при этом добрая и всегда готовая прийти на помощь другу.</p>
+                    
+                    <div class="character-traits">
+                        <h3>Черты характера</h3>
+                        <ul>
+                            <li><strong>Целеустремленная</strong> - работает на двух работах ради мечты</li>
+                            <li><strong>Практичная</strong> - верит в труд, а не в волшебство</li>
+                            <li><strong>Добрая</strong> - помогает друзьям несмотря на трудности</li>
+                            <li><strong>Талантливая</strong> - великолепный повар с детства</li>
+                            <li><strong>Независимая</strong> - первая принцесса с карьерными амбициями</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Хронология событий</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>1912: Детство и мечта</h4>
+                            <p>Маленькая Тиана учится готовить гамбо с отцом Джеймсом. Загадывает желание на вечернюю звезду, но отец учит её, что одного желания мало — нужен труд.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>1926: Встреча с Навином</h4>
+                            <p>Тиана работает на двух работах. На балу Шарлотты встречает принца Навина, превращенного в лягушку. Поцелуй превращает её саму в лягушку.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Приключение в болотах</h4>
+                            <p>Встреча с Луи (аллигатором) и Рэем (светлячком). Путь к Маме Оди. Осознание того, что любовь важнее амбиций.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Исполнение мечты</h4>
+                            <p>Победив Фасилье, Тиана выходит замуж за Навина и открывает "Дворец Тианы" — ресторан своей мечты.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Способности и таланты</h2>
+                    <div class="abilities-grid">
+                        <div class="ability-card">
+                            <h4>👩‍🍳 Кулинарное мастерство</h4>
+                            <p>Великолепный повар, специализируется на креольской и каджунской кухне. Её гамбо считается лучшим в Новом Орлеане.</p>
+                        </div>
+                        <div class="ability-card">
+                            <h4>💼 Предпринимательство</h4>
+                            <p>Единственная принцесса с бизнес-навыками. Самостоятельно планировала и реализовала мечту об открытии ресторана.</p>
+                        </div>
+                        <div class="ability-card">
+                            <h4>🐸 Общение с животными</h4>
+                            <p>В форме лягушки обретает способность понимать животных и общаться с ними.</p>
+                        </div>
+                        <div class="ability-card">
+                            <h4>💪 Трудолюбие</h4>
+                            <p>Работает на двух работах одновременно, демонстрируя невероятную целеустремленность и упорство.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Значимые отношения</h2>
+                    <div class="relationships">
+                        <div class="relationship-item">
+                            <h4>💖 Принц Навин</h4>
+                            <p>Избалованный принц из Мальдонии, который учит Тиану расслабляться и наслаждаться жизнью. Их отношения развиваются от взаимного раздражения до настоящей любви.</p>
+                        </div>
+                        <div class="relationship-item">
+                            <h4>👩‍👧 Эудора (мать)</h4>
+                            <p>Швея, которая поддерживает дочь и верит в её мечту. Воспитывала Тиану одна после смерти мужа.</p>
+                        </div>
+                        <div class="relationship-item">
+                            <h4>🎺 Луи</h4>
+                            <p>Аллигатор-музыкант, мечтающий играть джаз в оркестре. Становится верным другом Тианы.</p>
+                        </div>
+                        <div class="relationship-item">
+                            <h4>✨ Рэй</h4>
+                            <p>Романтичный светлячок, влюбленный в звезду Эванджелину. Помогает Тиане и Навину в их путешествии.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Музыкальные номера</h2>
+                    <div class="songs-list">
+                        <div class="song-item">
+                            <h4>🎵 "Almost There" (Почти у цели)</h4>
+                            <p>Соло Тианы, визуализированное в стиле Ар-деко, где она представляет свой будущий ресторан.</p>
+                        </div>
+                        <div class="song-item">
+                            <h4>🎵 "Down in New Orleans"</h4>
+                            <p>Открывающая песня фильма, представляющая атмосферу Нового Орлеана.</p>
+                        </div>
+                        <div class="song-item">
+                            <h4>🎵 "When We're Human"</h4>
+                            <p>Оптимистичная песня о возвращении в человеческий облик, которую исполняют Тиана, Навин и Луи.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Галерея</h2>
+                    <div class="media-gallery">
+                        <div class="media-item">
+                            <img src="img/tiana-rest.webp" alt="Тиана">
+                        </div>
+                        <div class="media-item">
+                            <img src="img/tiana-princess.jpeg" alt="Тиана">
+                        </div>
+                        <div class="media-item">
+                            <img src="img/tiana-naveen.jpg" alt="Тиана">
+                        </div>
+                        <div class="media-item">
+                            <img src="img/tiana-palace-mult.jpg" alt="Ресторан">
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <a href="#" class="fixed-btn" title="Наверх">↑</a>
+
+    <footer>
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h3>Королевский Архив</h3>
+                <p>Изучаем мир диснеевских принцесс</p>
+                <p>Учебный проект 2025</p>
+            </div>
+            <div class="footer-col">
+                <h3>Принцессы</h3>
+                <ul>
+                    <li><a href="tiana.html">Тиана</a></li>
+                    <li><a href="gallery.html">Все принцессы</a></li>
+                    <li><a href="locations.html">Локации</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <p>📧 tiana@royal-archive.com</p>
+                <p>📞 +1 (504) 555-0199</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Королевский Архив | Принцесса Тиана и все связанные персонажи принадлежат Disney</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

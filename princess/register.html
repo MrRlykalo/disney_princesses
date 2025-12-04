@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация | Королевский Архив</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo"><a href="index.html">КОРОЛЕВСКИЙ АРХИВ</a></div>
+            <div class="burger-btn"><span></span><span></span><span></span></div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="booking.html">Бронирование</a></li>
+                    <li><a href="locations.html">Локации</a></li>
+                    <li class="notif-wrapper">
+                        <button class="notif-btn">🔔<span class="notif-count">1</span></button>
+                        <ul class="notif-list" id="notification-list">
+                            <li data-href="register.html">🎁 Зарегистрируйтесь и получите подарок!</li>
+                        </ul>
+                    </li>
+                    <li class="account-mobile-links">
+                        <a href="login.html" class="btn-login">Войти</a>
+                        <a href="register.html" class="btn-register active">Регистрация</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="account-links">
+                <a href="login.html" class="btn-login">Войти</a>
+                <a href="register.html" class="btn-register active">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>Присоединиться к Архиву</h1>
+                    <p>Создайте учетную запись и откройте все волшебные возможности Королевского Архива</p>
+                </div>
+
+                <form id="register-form" class="auth-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reg-firstname">Имя</label>
+                            <input type="text" id="reg-firstname" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-lastname">Фамилия</label>
+                            <input type="text" id="reg-lastname" placeholder="Ваша фамилия" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-username">Имя пользователя</label>
+                        <input type="text" id="reg-username" placeholder="Придумайте логин" required>
+                        <div class="form-hint">От 3 до 20 символов (буквы, цифры, _)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-email">Email адрес</label>
+                        <input type="email" id="reg-email" placeholder="ваш@email.com" required>
+                        <div class="form-hint">На этот email придет подтверждение</div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reg-password">Пароль</label>
+                            <input type="password" id="reg-password" placeholder="Создайте пароль" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-confirm">Подтверждение</label>
+                            <input type="password" id="reg-confirm" placeholder="Повторите пароль" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-princess">Любимая принцесса</label>
+                        <select id="reg-princess" required>
+                            <option value="">Выберите принцессу...</option>
+                            <option value="tiana">👑 Тиана</option>
+                            <option value="belle">📚 Белль</option>
+                            <option value="ariel">🧜‍♀️ Ариэль</option>
+                            <option value="rapunzel">💫 Рапунцель</option>
+                            <option value="mulan">⚔️ Мулан</option>
+                            <option value="jasmine">🕌 Жасмин</option>
+                            <option value="cinderella">👠 Золушка</option>
+                            <option value="snowwhite">🍎 Белоснежка</option>
+                            <option value="aurora">🌹 Аврора</option>
+                            <option value="pocahontas">🍃 Покахонтас</option>
+                            <option value="merida">🏹 Мерида</option>
+                            <option value="moana">🌊 Моана</option>
+                            <option value="raya">🐉 Райя</option>
+                        </select>
+                    </div>
+
+                    <div class="captcha-section">
+                        <h3>Проверка безопасности</h3>
+                        <div class="captcha-container">
+                            <div class="captcha-display" id="captcha-display">5 + 3</div>
+                            <div class="captcha-input-group">
+                                <input type="text" id="captcha-input" placeholder="Введите сумму" maxlength="2">
+                                <button type="button" id="refresh-captcha" class="refresh-btn">🔄</button>
+                            </div>
+                        </div>
+                        <div id="captcha-message" class="captcha-message"></div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="accept-terms" required>
+                            <span class="checkmark"></span>
+                            Я принимаю <a href="#">Условия использования</a> и <a href="#">Политику конфиденциальности</a>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter-sub">
+                            <span class="checkmark"></span>
+                            Подписаться на магическую рассылку
+                        </label>
+                    </div>
+
+                    <button type="submit" id="register-submit" class="auth-btn primary" disabled>
+                        <span class="btn-text">Создать королевский аккаунт</span>
+                        <span class="btn-icon">👑</span>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Уже есть аккаунт? <a href="login.html" class="auth-link">Войдите здесь</a></p>
+                </div>
+            </div>
+
+            <div class="auth-welcome">
+                <div class="welcome-content">
+                    <h2>Станьте частью волшебства!</h2>
+                    <p>Присоединяйтесь к сообществу поклонников Диснея и откройте для себя эксклюзивный контент, доступный только зарегистрированным пользователям.</p>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🎁</div>
+                            <h4>Приветственный подарок</h4>
+                            <p>Получите эксклюзивную аватарку и рамку профиля после регистрации</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">📚</div>
+                            <h4>Полные досье</h4>
+                            <p>Доступ к подробным историям всех 13 официальных принцесс</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🎭</div>
+                            <h4>Участие в событиях</h4>
+                            <p>Бронируйте места на виртуальных балах и мероприятиях</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">👥</div>
+                            <h4>Сообщество</h4>
+                            <p>Общайтесь с другими поклонниками в королевском сообществе</p>
+                        </div>
+                    </div>
+
+                    <div class="stats-section">
+                        <h3>Нас уже:</h3>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <div class="stat-number">1,247</div>
+                                <div class="stat-label">Принцессолюбов</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">89</div>
+                                <div class="stat-label">Королевских событий</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">13</div>
+                                <div class="stat-label">Изученных королевств</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <a href="#" class="fixed-btn" title="Наверх">↑</a>
+
+    <footer>
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h3>Королевский Архив</h3>
+                <p>Присоединяйтесь к нашему растущему сообществу поклонников волшебного мира Диснея.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Безопасность</h3>
+                <ul>
+                    <li><a href="#">Защита данных</a></li>
+                    <li><a href="#">Безопасность аккаунта</a></li>
+                    <li><a href="#">Детская безопасность</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Поддержка</h3>
+                <p>📧 <a href="mailto:help@royal-archive.com">help@royal-archive.com</a></p>
+                <p>🛡️ Ваши данные в полной безопасности</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Королевский Архив | Регистрация нового члена королевства</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const captchaDisplay = document.getElementById('captcha-display');
+            const captchaInput = document.getElementById('captcha-input');
+            const refreshBtn = document.getElementById('refresh-captcha');
+            const captchaMessage = document.getElementById('captcha-message');
+            const registerSubmit = document.getElementById('register-submit');
+            
+            let num1, num2, correctAnswer;
+
+            function generateCaptcha() {
+                num1 = Math.floor(Math.random() * 10) + 1;
+                num2 = Math.floor(Math.random() * 10) + 1;
+                correctAnswer = num1 + num2;
+                captchaDisplay.textContent = `${num1} + ${num2}`;
+                captchaInput.value = '';
+                captchaMessage.textContent = '';
+                registerSubmit.disabled = true;
+            }
+
+            function checkCaptcha() {
+                const userAnswer = parseInt(captchaInput.value.trim());
+                
+                if (isNaN(userAnswer)) {
+                    captchaMessage.textContent = '⚠️ Введите число';
+                    captchaMessage.style.color = '#e74c3c';
+                    registerSubmit.disabled = true;
+                    return;
+                }
+
+                if (userAnswer === correctAnswer) {
+                    captchaMessage.textContent = '✅ Верно! Продолжайте регистрацию';
+                    captchaMessage.style.color = '#27ae60';
+                    registerSubmit.disabled = false;
+                } else {
+                    captchaMessage.textContent = '❌ Неверный ответ. Попробуйте еще раз';
+                    captchaMessage.style.color = '#e74c3c';
+                    registerSubmit.disabled = true;
+                }
+            }
+
+            // Инициализация капчи
+            generateCaptcha();
+
+            // Обработчики событий
+            refreshBtn.addEventListener('click', generateCaptcha);
+            captchaInput.addEventListener('input', checkCaptcha);
+
+            // Обработка формы регистрации
+            const registerForm = document.getElementById('register-form');
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (!registerSubmit.disabled) {
+                    // Имитация успешной регистрации
+                    registerSubmit.innerHTML = '<span class="btn-text">Регистрация...</span><span class="btn-icon">⏳</span>';
+                    registerSubmit.disabled = true;
+                    
+                    setTimeout(() => {
+                        alert('🎉 Регистрация успешна! Добро пожаловать в Королевский Архив!');
+                        window.location.href = 'profile.html';
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+    <style>
+        .auth-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            min-height: 80vh;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .auth-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .auth-header h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+
+        .auth-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.1);
+        }
+
+        .form-hint {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        .captcha-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .captcha-section h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .captcha-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .captcha-display {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            border: 2px dashed var(--gold);
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .captcha-input-group {
+            display: flex;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .captcha-input-group input {
+            flex: 1;
+        }
+
+        .refresh-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .refresh-btn:hover {
+            background: var(--primary-light);
+        }
+
+        .captcha-message {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-options {
+            margin: 25px 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .checkbox-label input {
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+        .checkbox-label a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .auth-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .auth-btn.primary:hover:not(:disabled) {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .auth-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .auth-footer {
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            padding-top: 25px;
+        }
+
+        .auth-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .auth-link:hover {
+            color: var(--primary-light);
+        }
+
+        .auth-welcome {
+            padding: 40px;
+        }
+
+        .welcome-content h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .welcome-content p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .benefit-card h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .benefit-card p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .stats-section {
+            text-align: center;
+        }
+
+        .stats-section h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 900px) {
+            .auth-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .auth-card {
+                padding: 30px 25px;
+            }
+
+            .auth-welcome {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
